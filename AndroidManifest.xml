@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.catchoom.test"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="18" />
+ 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA_EXTENDED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/craftar_c"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.craftar.examples.SplashScreenActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.craftar.examples.RecognitionFinderActivity"
+            android:screenOrientation="portrait">
+            </activity>
+        <activity
+            android:name="com.craftar.examples.RecognitionSingleShotActivity"
+            android:screenOrientation="portrait">
+            </activity>
+        <activity
+            android:name="com.craftar.examples.LaunchersActivity">
+            </activity>
+        <activity
+            android:name="ccom.craftar.test.HowToActivity">
+            </activity>
+        <activity
+            android:name="com.craftar.examples.WebActivityvity">
+            </activity>
+        <activity
+            android:name="com.craftar.examples.ScreenSlideActivity"
+            android:screenOrientation="portrait">
+            </activity>
+    </application>
+
+</manifest>

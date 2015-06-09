@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".RecognitionFinderActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp" >
+
+        <TextView
+            android:id="@+id/howto_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/launchers_howto"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/red_catchoom" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/howto_link"
+            android:layout_centerInParent="true"
+            android:background="@color/separator" >
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- Example with finder mode -->
+    <include layout="@layout/launchers_row_finder"/>
+    
+   	<!-- Example with single shot -->
+    <include layout="@layout/launchers_row_singleshot"/>
+    
+    <!-- Example with fragments-->
+    <include layout="@layout/launchers_row_fragment"/>
+    
+    <LinearLayout
+        android:id="@+id/layout_logos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/layout_catchoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="15dp"
+                android:text="@string/launchers_about"
+                android:textColor="@color/red_catchoom" />
+
+            <ImageButton
+                android:id="@+id/imageButton_logo"
+                style="@style/AppBaseTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@android:color/transparent"
+                android:onClick="goToCatchoom"
+                android:scaleType="centerInside"
+                android:src="@drawable/craftar_logo" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/launchers_no_account"
+                android:textColor="@color/separator"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button_signUp"
+                android:layout_width="160dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@android:color/transparent"
+                android:onClick="goToCatchoom"
+                android:text="@string/launchers_signup"
+                android:textColor="@color/red_catchoom"
+                android:textColorHint="@android:color/transparent"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
