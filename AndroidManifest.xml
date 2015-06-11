@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.craftar.examples.SplashScreenActivity"
+            android:name="com.catchoom.test.SplashScreenActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,24 +29,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.craftar.examples.RecognitionFinderActivity"
+            android:name="com.catchoom.test.RecognitionFinderActivity"
             android:screenOrientation="portrait">
             </activity>
         <activity
-            android:name="com.craftar.examples.RecognitionSingleShotActivity"
+            android:name="com.catchoom.test.RecognitionSingleShotActivity"
             android:screenOrientation="portrait">
             </activity>
         <activity
-            android:name="com.craftar.examples.LaunchersActivity">
+            android:name="com.catchoom.test.LaunchersActivity">
             </activity>
         <activity
             android:name="ccom.craftar.test.HowToActivity">
             </activity>
         <activity
-            android:name="com.craftar.examples.WebActivityvity">
+            android:name="com.catchoom.test.WebActivityvity">
             </activity>
         <activity
-            android:name="com.craftar.examples.ScreenSlideActivity"
+            android:name="com.catchoom.test.ScreenSlideActivity"
             android:screenOrientation="portrait">
             </activity>
     </application>

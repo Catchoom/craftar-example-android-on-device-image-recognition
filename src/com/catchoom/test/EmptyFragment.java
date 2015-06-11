@@ -1,4 +1,4 @@
-package com.craftar.examples;
+package com.catchoom.test;
 
 import android.app.Fragment;
 import android.os.Bundle;
