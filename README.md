@@ -38,3 +38,17 @@ Android Studio:
  8. Note that the project importer might have not imported some files from the source project (for example, the example reference images). Locate them and copy them in the project. 
 
 * Note: If your app uses android-support libraries, remove the android-support-v13.jar from the libs folder, and use your own one instead.
+
+### Reference images
+
+The project includes a folder 'ReferenceImages' with sample images using the Open Demos collection with the 'catchoomcooldemo' token.
+
+Samples images:
+
+![Business card](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/biz_card.jpe)
+
+![Cart](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/Image%20Recognition.jpg)
+
+
+
+
