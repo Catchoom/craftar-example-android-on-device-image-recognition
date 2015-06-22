@@ -31,7 +31,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.catchoom.test.R;
 import com.craftar.CraftARActivity;
 import com.craftar.CraftARCamera;
 import com.craftar.CraftARError;

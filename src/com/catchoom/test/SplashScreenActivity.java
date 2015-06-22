@@ -35,7 +35,7 @@ import com.craftar.CraftARCollectionManager;
 import com.craftar.CraftARCollectionManager.AddCollectionListener;
 import com.craftar.CraftARError;
 import com.craftar.CraftAROnDeviceIR;
-import com.craftar.SetCollectionListener;
+import com.craftar.ImageRecognition.SetCollectionListener;
 
 public class SplashScreenActivity extends Activity implements SetCollectionListener,
 AddCollectionListener{
