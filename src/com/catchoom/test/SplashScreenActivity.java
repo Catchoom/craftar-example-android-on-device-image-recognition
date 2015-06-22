@@ -55,12 +55,13 @@ AddCollectionListener{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash_screen);
-
-		//Initialize the Offline IR Module
-		mCraftAROnDeviceIR = CraftAROnDeviceIR.Instance(getApplicationContext());
-				
+			
 		//Initialize the Collection Manager
 		mCollectionManager = CraftARCollectionManager.Instance(getApplicationContext()); 
+		
+		//Initialize the Offline IR Module
+		mCraftAROnDeviceIR = CraftAROnDeviceIR.Instance(getApplicationContext());
+			
 				
 		//Obtain the collection with your token.
 		//This will lookup for the collection in the internal storage, and return the collection if it's available.
