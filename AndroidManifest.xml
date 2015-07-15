@@ -43,7 +43,7 @@
             android:name="ccom.craftar.test.HowToActivity">
             </activity>
         <activity
-            android:name="com.catchoom.test.WebActivityvity">
+            android:name="com.catchoom.test.WebActivity">
             </activity>
         <activity
             android:name="com.catchoom.test.ScreenSlideActivity"
