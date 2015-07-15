@@ -23,6 +23,7 @@
 package com.catchoom.test;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,15 +31,17 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.catchoom.test.R;
+import com.craftar.CLog;
 import com.craftar.CraftARCollection;
 import com.craftar.CraftARCollectionManager;
 import com.craftar.CraftARCollectionManager.AddCollectionListener;
+import com.craftar.CraftARCollectionManager.SyncCollectionListener;
 import com.craftar.CraftARError;
 import com.craftar.CraftAROnDeviceIR;
 import com.craftar.ImageRecognition.SetCollectionListener;
 
 public class SplashScreenActivity extends Activity implements SetCollectionListener,
-AddCollectionListener{
+AddCollectionListener, SyncCollectionListener {
 
 	private final static String TAG = "SplashScreenActivity";	
 
@@ -49,6 +52,10 @@ AddCollectionListener{
 
 	CraftAROnDeviceIR mCraftAROnDeviceIR;
 	CraftARCollectionManager mCollectionManager;
+
+	ProgressDialog addCollectionDialog;
+	ProgressDialog setCollectionDialog;
+	ProgressDialog syncCollectionDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +74,26 @@ AddCollectionListener{
 		//This will lookup for the collection in the internal storage, and return the collection if it's available.
 		CraftARCollection col =  mCollectionManager.get(COLLECTION_TOKEN); 
 		if(col == null){
-			//Collection is not available. Add it from assets using the collection bundle.
-			mCollectionManager.addCollection((AddCollectionListener)this,"catchoomcooldemoBundle.zip");
+			//Collection is not available. Add it from the CraftAR service using the collection token.
+			mCollectionManager.addCollectionWithToken(this, COLLECTION_TOKEN);
+			// Alternatively it can be added from assets using the collection bundle.
+			//mCollectionManager.addCollection((AddCollectionListener)this,"catchoomcooldemoBundle.zip");
 		}else{
 			//Collection is already available in the device.
-			loadCollection(col);
+			showSyncDialog();
+			col.sync((SyncCollectionListener)this);
 		}
     }
-
+	
 	@Override
 	public void collectionReady() {
+		Toast.makeText(getApplicationContext(), "Collection ready!", Toast.LENGTH_SHORT).show();
+		if(setCollectionDialog!=null){
+			if(setCollectionDialog.isShowing()){
+				CLog.d("Dissmissing setCollectionDialog...");
+				setCollectionDialog.dismiss();
+			}
+		}
 		//Collection is ready for recognition.
 		Intent launchersActivity = new Intent( SplashScreenActivity.this, LaunchersActivity.class);
 		startActivity(launchersActivity);
@@ -85,6 +102,12 @@ AddCollectionListener{
 
 	@Override
 	public void setCollectionFailed(CraftARError error) {
+		Toast.makeText(getApplicationContext(), "setCollection failed! ("+error.getErrorCode()+"):"+error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+		if(setCollectionDialog!=null){
+			if(setCollectionDialog.isShowing()){
+				setCollectionDialog.dismiss();
+			}
+		}
 		//Error loading the collection into memory. No recognition can be performed unless a collection has been set.
 		Log.e(TAG,"SetCollectionFailed ("+error.getErrorCode()+"):"+error.getErrorMessage());
 		Toast.makeText(getApplicationContext(), "Error loading", Toast.LENGTH_SHORT).show();
@@ -92,6 +115,11 @@ AddCollectionListener{
 
 	@Override
 	public void setCollectionProgress(double progress) {
+		if(setCollectionDialog!=null){
+			if(setCollectionDialog.isShowing()){
+				setCollectionDialog.setProgress((int)(100*progress));
+			}
+		}
 		//The images from the collection are loading into memory. You will have to load the collections into memory every time you open the app. 
 		Log.d(TAG,"SetCollectionProgress:"+progress);
 	}
@@ -100,6 +128,12 @@ AddCollectionListener{
 	@Override
 	public void collectionAdded(CraftARCollection collection) {
 		//Collection bundle has been added. Set this collection as current collection.
+		Toast.makeText(getApplicationContext(), "Collection "+collection.getName()+ " added!",Toast.LENGTH_SHORT).show();
+		if(addCollectionDialog!=null){
+			if(addCollectionDialog.isShowing()){
+				addCollectionDialog.dismiss();
+			}
+		}
 		loadCollection(collection);
 	}
 	
@@ -108,6 +142,9 @@ AddCollectionListener{
 		//Error adding the bundle to the device internal storage. 
 		Log.e(TAG,"AddCollectionFailed("+error.getErrorCode()+"):"+error.getErrorMessage());
 		Toast.makeText(getApplicationContext(), "Error adding collection", Toast.LENGTH_SHORT).show();
+		if(addCollectionDialog.isShowing()){
+			addCollectionDialog.dismiss();
+		}
 		switch(error.getErrorCode()){
 		case COLLECTION_BUNDLE_SDK_VERSION_IS_OLD:
 			//You are trying to add a bundle which version is newer than the SDK version. 
@@ -127,10 +164,88 @@ AddCollectionListener{
 		//Progress adding the collection to internal storage (de-compressing bundle and storing into the device storage).
 		//Note that this might only happen once per app installation, or when the bundle is updated.
 		Log.d(TAG,"AddCollectionProgress:"+progress);
+		if(addCollectionDialog!=null){
+			if(addCollectionDialog.isShowing()){
+				addCollectionDialog.setProgress((int)(100*progress));
+			}
+		}
 	}
 	
 	private void loadCollection(CraftARCollection collection){
+		showSetCollectionDialog();
 		mCraftAROnDeviceIR.setCollection((SetCollectionListener)this, collection);
 	}
 
+
+
+	@Override
+	public void syncSuccessful(CraftARCollection collection) {
+		String text = "Sync succesful for collection "+collection.getName();
+		Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
+		Log.d(TAG,text);
+		if(syncCollectionDialog!=null){
+			if(syncCollectionDialog.isShowing()){
+				syncCollectionDialog.dismiss();
+			}
+		}
+		
+		loadCollection(collection);
+	}
+
+
+	@Override
+	public void syncProgress(CraftARCollection collection, float progress) {
+		Log.e(TAG, "Sync progress for collection "+collection.getName() + ":"+progress);
+		if(syncCollectionDialog!=null){
+			if(syncCollectionDialog.isShowing()){
+				syncCollectionDialog.setProgress((int)(100*progress));
+			}
+		}
+	}
+
+
+	@Override
+	public void syncFailed(CraftARCollection collection, CraftARError error) {
+		String text = "Sync failed for collection "+collection.getName();
+		Toast.makeText(getApplicationContext(), text , Toast.LENGTH_SHORT).show();	
+		Log.e(TAG, text + ":"+error.getErrorMessage());
+		if(syncCollectionDialog!=null){
+			if(syncCollectionDialog.isShowing()){
+				syncCollectionDialog.dismiss();
+			}
+		}
+		loadCollection(collection);
+	}
+
+	
+	public void showAddDialog(){
+		addCollectionDialog = new ProgressDialog(SplashScreenActivity.this);
+		addCollectionDialog.setTitle("Uncompressing bundle...");
+		addCollectionDialog.setMessage("Add collection in progress ...");
+		addCollectionDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		addCollectionDialog.setProgress(0);
+		addCollectionDialog.setMax(100);
+		addCollectionDialog.show();
+	}
+	
+	public void showSyncDialog(){
+		syncCollectionDialog = new ProgressDialog(SplashScreenActivity.this);
+		syncCollectionDialog.setTitle("Syncing");
+		syncCollectionDialog.setMessage("Sync in progress ...");
+		syncCollectionDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		syncCollectionDialog.setProgress(0);
+		syncCollectionDialog.setMax(100);
+		syncCollectionDialog.show();
+	}
+	
+	public void showSetCollectionDialog(){
+		setCollectionDialog = new ProgressDialog(SplashScreenActivity.this);
+		setCollectionDialog.setTitle("Loading collection...");
+		setCollectionDialog.setMessage("Loading collection in progress ...");
+		setCollectionDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		setCollectionDialog.setProgress(0);
+		setCollectionDialog.setMax(100);
+		setCollectionDialog.show();
+	}
+	
 }
