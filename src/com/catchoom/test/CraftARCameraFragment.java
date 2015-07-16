@@ -134,9 +134,10 @@ public class CraftARCameraFragment extends Fragment  implements CraftARSearchRes
 		}
 		resultsText = resultsText.substring(0,resultsText.length() - 1); //Eliminate the last \n
 	
-		//Show a dialog with the results
-		boolean isActivityFinishing = getActivity().isFinishing();
-		if(!isActivityFinishing){		
+		//Show a dialog with the result 
+		
+		if((getActivity()!= null ) &&(! getActivity().isFinishing())){//Ensure that the activity is active.
+			
 			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
 			dialogBuilder.setTitle("Search results:");
 			dialogBuilder.setMessage(resultsText);
