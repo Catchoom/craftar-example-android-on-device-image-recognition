@@ -74,6 +74,7 @@ AddCollectionListener, SyncCollectionListener {
 		//This will lookup for the collection in the internal storage, and return the collection if it's available.
 		CraftARCollection col =  mCollectionManager.get(COLLECTION_TOKEN); 
 		if(col == null){
+			showAddCollectionWithTokenDialog();
 			//Collection is not available. Add it from the CraftAR service using the collection token.
 			mCollectionManager.addCollectionWithToken(COLLECTION_TOKEN,this);
 			// Alternatively it can be added from assets using the collection bundle.
@@ -218,9 +219,9 @@ AddCollectionListener, SyncCollectionListener {
 	}
 
 	
-	public void showAddDialog(){
+	public void showAddCollectionWithTokenDialog(){
 		addCollectionDialog = new ProgressDialog(SplashScreenActivity.this);
-		addCollectionDialog.setTitle("Uncompressing bundle...");
+		addCollectionDialog.setTitle("Downloading bundle...");
 		addCollectionDialog.setMessage("Add collection in progress ...");
 		addCollectionDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		addCollectionDialog.setProgress(0);
