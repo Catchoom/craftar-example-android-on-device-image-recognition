@@ -75,7 +75,7 @@ AddCollectionListener, SyncCollectionListener {
 		CraftARCollection col =  mCollectionManager.get(COLLECTION_TOKEN); 
 		if(col == null){
 			//Collection is not available. Add it from the CraftAR service using the collection token.
-			mCollectionManager.addCollectionWithToken(this, COLLECTION_TOKEN);
+			mCollectionManager.addCollectionWithToken(COLLECTION_TOKEN,this);
 			// Alternatively it can be added from assets using the collection bundle.
 			//mCollectionManager.addCollection((AddCollectionListener)this,"catchoomcooldemoBundle.zip");
 		}else{
@@ -173,8 +173,8 @@ AddCollectionListener, SyncCollectionListener {
 	
 	private void loadCollection(CraftARCollection collection){
 		showSetCollectionDialog();
-		mCraftAROnDeviceIR.setCollection((SetCollectionListener)this, collection);
-	}
+		mCraftAROnDeviceIR.setCollection(collection, (SetCollectionListener)this);
+	} 
 
 
 
