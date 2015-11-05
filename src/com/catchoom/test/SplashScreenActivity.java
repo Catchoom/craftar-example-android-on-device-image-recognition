@@ -30,17 +30,19 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.catchoom.test.R;
 import com.craftar.CLog;
-import com.craftar.CraftARCollection;
-import com.craftar.CraftARCollectionManager;
-import com.craftar.CraftARCollectionManager.AddCollectionListener;
-import com.craftar.CraftARCollectionManager.SyncCollectionListener;
+import com.craftar.CraftAROnDeviceCollection;
 import com.craftar.CraftARError;
+import com.craftar.CraftAROnDeviceCollection;
+import com.craftar.CraftAROnDeviceCollectionManager;
+import com.craftar.CraftAROnDeviceCollectionManager.AddCollectionListener;
+import com.craftar.CraftAROnDeviceCollectionManager.SyncCollectionListener;
 import com.craftar.CraftAROnDeviceIR;
+import com.craftar.CraftARSDK;
 import com.craftar.ImageRecognition.SetCollectionListener;
+import com.craftar.ImageRecognition.SetOnDeviceCollectionListener;
 
-public class SplashScreenActivity extends Activity implements SetCollectionListener,
+public class SplashScreenActivity extends Activity implements SetOnDeviceCollectionListener,
 AddCollectionListener, SyncCollectionListener {
 
 	private final static String TAG = "SplashScreenActivity";	
@@ -48,10 +50,10 @@ AddCollectionListener, SyncCollectionListener {
 	//Collection token of the collection you want to load.
 	//Note that you can load several collections at once, but every search 
 	//request is performed only on ONE collection (the one that you have set through CraftAROnDeviceIR.setCollection()).
-	public final static String COLLECTION_TOKEN="catchoomcooldemo";
+	public final static String COLLECTION_TOKEN="craftarexamples3";
 
 	CraftAROnDeviceIR mCraftAROnDeviceIR;
-	CraftARCollectionManager mCollectionManager;
+	CraftAROnDeviceCollectionManager mCollectionManager;
 
 	ProgressDialog addCollectionDialog;
 	ProgressDialog setCollectionDialog;
@@ -63,22 +65,25 @@ AddCollectionListener, SyncCollectionListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash_screen);
 			
+		CraftARSDK.Instance().init(getApplicationContext());
+		
 		//Initialize the Collection Manager
-		mCollectionManager = CraftARCollectionManager.Instance(getApplicationContext()); 
+		mCollectionManager = CraftAROnDeviceCollectionManager.Instance(); 
 		
 		//Initialize the Offline IR Module
-		mCraftAROnDeviceIR = CraftAROnDeviceIR.Instance(getApplicationContext());
+		mCraftAROnDeviceIR = CraftAROnDeviceIR.Instance();
 			
 				
 		//Obtain the collection with your token.
 		//This will lookup for the collection in the internal storage, and return the collection if it's available.
-		CraftARCollection col =  mCollectionManager.get(COLLECTION_TOKEN); 
+		CraftAROnDeviceCollection col =  mCollectionManager.get(COLLECTION_TOKEN); 
 		if(col == null){
 			showAddCollectionWithTokenDialog();
 			//Collection is not available. Add it from the CraftAR service using the collection token.
 			mCollectionManager.addCollectionWithToken(COLLECTION_TOKEN,this);
+			
 			// Alternatively it can be added from assets using the collection bundle.
-			//mCollectionManager.addCollection((AddCollectionListener)this,"catchoomcooldemoBundle.zip");
+			//mCollectionManager.addCollection((AddCollectionListener)this,"craftarexamples3.zip");
 		}else{
 			//Collection is already available in the device.
 			showSyncDialog();
@@ -127,7 +132,7 @@ AddCollectionListener, SyncCollectionListener {
 
 
 	@Override
-	public void collectionAdded(CraftARCollection collection) {
+	public void collectionAdded(CraftAROnDeviceCollection collection) {
 		//Collection bundle has been added. Set this collection as current collection.
 		Toast.makeText(getApplicationContext(), "Collection "+collection.getName()+ " added!",Toast.LENGTH_SHORT).show();
 		if(addCollectionDialog!=null){
@@ -172,7 +177,7 @@ AddCollectionListener, SyncCollectionListener {
 		}
 	}
 	
-	private void loadCollection(CraftARCollection collection){
+	private void loadCollection(CraftAROnDeviceCollection collection){
 		showSetCollectionDialog();
 		mCraftAROnDeviceIR.setCollection(collection, (SetCollectionListener)this);
 	} 
@@ -180,7 +185,7 @@ AddCollectionListener, SyncCollectionListener {
 
 
 	@Override
-	public void syncSuccessful(CraftARCollection collection) {
+	public void syncSuccessful(CraftAROnDeviceCollection collection) {
 		String text = "Sync succesful for collection "+collection.getName();
 		Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 		Log.d(TAG,text);
@@ -195,7 +200,7 @@ AddCollectionListener, SyncCollectionListener {
 
 
 	@Override
-	public void syncProgress(CraftARCollection collection, float progress) {
+	public void syncProgress(CraftAROnDeviceCollection collection, float progress) {
 		Log.e(TAG, "Sync progress for collection "+collection.getName() + ":"+progress);
 		if(syncCollectionDialog!=null){
 			if(syncCollectionDialog.isShowing()){
@@ -206,7 +211,7 @@ AddCollectionListener, SyncCollectionListener {
 
 
 	@Override
-	public void syncFailed(CraftARCollection collection, CraftARError error) {
+	public void syncFailed(CraftAROnDeviceCollection collection, CraftARError error) {
 		String text = "Sync failed for collection "+collection.getName();
 		Toast.makeText(getApplicationContext(), text , Toast.LENGTH_SHORT).show();	
 		Log.e(TAG, text + ":"+error.getErrorMessage());

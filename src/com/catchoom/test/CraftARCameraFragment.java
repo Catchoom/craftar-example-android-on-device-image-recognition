@@ -41,12 +41,13 @@ public class CraftARCameraFragment extends Fragment  implements CraftARSearchRes
         mScanningLayout = rootView.findViewById(R.id.layout_scanning);
         mParentActivity = (ScreenSlideActivity) getActivity();
         
-        //Obtain an instance and initialize the CraftARSDK (which manages the camera interaction).
-		mCraftARSDK = CraftARSDK.Instance();
+        //Obtain an instance of the CraftARSDK (which manages the camera interaction).
+        //Note we already called CraftARSDK.init() in the Splash Screen, so we don't have to do it again
+		mCraftARSDK = CraftARSDK.Instance(); 
 		mCraftARSDK.startCapture(mParentActivity);
 		
 		//Get the instance to the OnDeviceIR singleton (it has already been initialized in the SplashScreenActivity, and the collectoins are already loaded).
-		mOnDeviceIR = CraftAROnDeviceIR.Instance(mParentActivity.getApplicationContext());	
+		mOnDeviceIR = CraftAROnDeviceIR.Instance();	
 		
 		//Tell the SDK that the OnDeviceIR who manage the calls to singleShotSearch() and startFinding().
 		//In this case, as we are using on-device-image-recognition, we will tell the SDK that the OnDeviceIR singleton will manage this calls.
@@ -187,6 +188,14 @@ public class CraftARCameraFragment extends Fragment  implements CraftARSearchRes
 	    if(mIsFragmentVisible){
 	    	startFinding();
 	    }
+	}
+	
+	public void onPreviewStarted(int width, int height){
+		//We get the event from the CraftARActivity
+	}
+	
+	public void onCameraOpenFailed(){
+		//We get the event from the CraftARActivity
 	}
  
 }

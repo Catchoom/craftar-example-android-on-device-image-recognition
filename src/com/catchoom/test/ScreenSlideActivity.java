@@ -97,5 +97,16 @@ public class ScreenSlideActivity extends CraftARActivity{
             return NUM_PAGES;
         }
     }
+
+
+	@Override
+	public void onCameraOpenFailed() {
+		cameraFragment.onCameraOpenFailed();
+	}
+
+	@Override
+	public void onPreviewStarted(int width, int height) {
+		cameraFragment.onPreviewStarted(width,height);
+	}
   
 }
