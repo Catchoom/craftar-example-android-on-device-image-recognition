@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import com.craftar.CraftARActivity;
 import com.craftar.CraftARCamera;
@@ -88,8 +89,7 @@ public class RecognitionSingleShotActivity extends CraftARActivity implements Cr
 
 	@Override
 	public void onCameraOpenFailed() {
-		// TODO Auto-generated method stub
-		
+		Toast.makeText(getApplicationContext(), "Camera error", Toast.LENGTH_SHORT).show();		
 	}
 
 	@Override

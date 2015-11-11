@@ -29,6 +29,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.catchoom.test.R;
 import com.craftar.CraftARActivity;
@@ -81,8 +82,7 @@ public class RecognitionFinderActivity extends CraftARActivity implements CraftA
 	
 	@Override
 	public void onCameraOpenFailed() {
-		// TODO Auto-generated method stub
-		
+		Toast.makeText(getApplicationContext(), "Camera error", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override

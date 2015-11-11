@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.catchoom.test.R;
 import com.craftar.CraftARError;
@@ -196,6 +197,7 @@ public class CraftARCameraFragment extends Fragment  implements CraftARSearchRes
 	
 	public void onCameraOpenFailed(){
 		//We get the event from the CraftARActivity
+		Toast.makeText(getActivity().getApplicationContext(), "Camera error", Toast.LENGTH_SHORT).show();
 	}
  
 }
