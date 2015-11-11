@@ -78,7 +78,6 @@ public class ExtendedRecognitionActivity extends CraftARActivity implements OnCl
 
 	private final static String TAG = "ExtendedRecognitionActivity";
 
-	private final static String MY_ONDEVICE_COLLECTION_TOKEN = SplashScreenActivity.COLLECTION_TOKEN;
 	private final static String MY_CLOUD_COLLECTION_TOKEN = "cloudrecognition";
 	
 	private View mScanningLayout;
@@ -165,7 +164,7 @@ public class ExtendedRecognitionActivity extends CraftARActivity implements OnCl
 		
 		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 		dialogBuilder.setTitle("No objects found");
-		dialogBuilder.setMessage("Point to an object of the "+SplashScreenActivity.COLLECTION_TOKEN+" collection");
+		dialogBuilder.setMessage("Point to an object of the "+SplashScreenActivity.COLLECTION_TOKEN+" or " + MY_CLOUD_COLLECTION_TOKEN +" collections");
 		dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
 	        	showTapToScan();
