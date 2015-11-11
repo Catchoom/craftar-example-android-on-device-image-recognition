@@ -22,29 +22,16 @@
 
 package com.catchoom.test;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
-import com.catchoom.test.R;
+import com.catchoom.advancedexamples.ExtendedRecognitionActivity;
 
 public class LaunchersActivity extends Activity implements OnClickListener {
-
-	// Launch example links
-	private LinearLayout mRecognitionFinder;
-	private LinearLayout mRecognitionOnly;
-	private LinearLayout mRecognitionFragment;
-
-	// Bottom links
-	private ImageButton mButtonCatchoom;
-	private Button mButtonSignUp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,51 +40,46 @@ public class LaunchersActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_launchers);
 
 		// Setup example links
-		mRecognitionFinder = (LinearLayout)findViewById(R.id.play_finder);
-		mRecognitionFinder.setClickable(true);
-		mRecognitionFinder.setOnClickListener(this);
-		mRecognitionOnly = (LinearLayout)findViewById(R.id.play_recognition_only);
-		mRecognitionOnly.setClickable(true);
-		mRecognitionOnly.setOnClickListener(this);
-		mRecognitionFragment = (LinearLayout)findViewById(R.id.play_fragment_finder);
-		mRecognitionFragment.setClickable(true);
-		mRecognitionFragment.setOnClickListener(this);
-		
+		findViewById(R.id.play_finder).setOnClickListener(this);
+		findViewById(R.id.play_recognition_only).setOnClickListener(this);
+		findViewById(R.id.play_fragment_finder).setOnClickListener(this);
+		findViewById(R.id.play_extended_recognition).setOnClickListener(this);
+
 		// Setup bottom Links
-		mButtonCatchoom = (ImageButton)findViewById(R.id.imageButton_logo);
-		mButtonCatchoom.setOnClickListener(this);
-		mButtonSignUp = (Button)findViewById(R.id.button_signUp);
-		mButtonSignUp.setOnClickListener(this);
+		findViewById(R.id.imageButton_logo).setOnClickListener(this);
+		findViewById(R.id.button_signUp).setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 				
 		// Clicked on play links
-		Intent playExampleIntent = null;
-		if (v == mRecognitionFinder) {
-			playExampleIntent = new Intent(this, RecognitionFinderActivity.class);
-		} else if (v == mRecognitionOnly) {
-			playExampleIntent = new Intent(this, RecognitionSingleShotActivity.class);
-		} else if (v == mRecognitionFragment) {
-			playExampleIntent = new Intent(this, ScreenSlideActivity.class);
+		Intent intent = null;
+		switch(v.getId()){
+		case R.id.play_finder:
+			intent = new Intent(this, RecognitionFinderActivity.class);
+			break;
+		case R.id.play_recognition_only:
+			intent = new Intent(this, RecognitionSingleShotActivity.class);
+			break;
+		case R.id.play_fragment_finder:
+			intent = new Intent(this, ScreenSlideActivity.class);
+			break;
+		case R.id.play_extended_recognition:
+			intent = new Intent(this, ExtendedRecognitionActivity.class);
+			break;
+		case R.id.imageButton_logo:
+			intent = new Intent(this, WebActivity.class);
+			intent.putExtra(WebActivity.WEB_ACTIVITY_URL, "http://catchoom.com/product/?utm_source=CraftARExamplesApp&amp;utm_medium=Android&amp;utm_campaign=HelpWithAPI");
+			break;
+		case R.id.button_signUp:
+			intent = new Intent(this, WebActivity.class);
+			intent.putExtra(WebActivity.WEB_ACTIVITY_URL, "https://my.craftar.net/try-free?utm_source=CraftARExamplesApp&amp;utm_medium=Android&amp;utm_campaign=HelpWithAPI");
+			break;
 		}
 		
-		if (playExampleIntent != null) {
-			startActivity(playExampleIntent);
-			return;
-		}
-		
-		// Clicked on bottom links
-		if (v == mButtonCatchoom || v == mButtonSignUp) {
-			String url = "http://catchoom.com/product/?utm_source=CraftARExamplesApp&amp;utm_medium=Android&amp;utm_campaign=HelpWithAPI";
-			if (v == mButtonSignUp) {
-				url = "https://my.craftar.net/try-free?utm_source=CraftARExamplesApp&amp;utm_medium=Android&amp;utm_campaign=HelpWithAPI";
-			}
-			
-			Intent launchWebView = new Intent(this, WebActivity.class);
-			launchWebView.putExtra(WebActivity.WEB_ACTIVITY_URL, url);
-			startActivity(launchWebView);			
+		if (intent != null) {
+			startActivity(intent);
 			return;
 		}
 	}

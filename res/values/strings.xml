@@ -7,6 +7,8 @@
     <string name="launchers_howto">How to use the examples</string>
     <string name="launchers_reco_finder">Recognition Finder Mode</string>
     <string name="launchers_reco_only">Recognition Single Mode</string>
+    <string name="launchers_hybrid">Extended Recognition </string>
+    
     <string name="launchers_fragment_finder">Fragment slider with finder mode</string>
     
     <string name="launchers_signup">Sign Up</string>

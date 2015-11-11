@@ -31,7 +31,6 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.craftar.CLog;
-import com.craftar.CraftAROnDeviceCollection;
 import com.craftar.CraftARError;
 import com.craftar.CraftAROnDeviceCollection;
 import com.craftar.CraftAROnDeviceCollectionManager;
@@ -50,7 +49,7 @@ AddCollectionListener, SyncCollectionListener {
 	//Collection token of the collection you want to load.
 	//Note that you can load several collections at once, but every search 
 	//request is performed only on ONE collection (the one that you have set through CraftAROnDeviceIR.setCollection()).
-	public final static String COLLECTION_TOKEN="craftarexamples3";
+	public final static String COLLECTION_TOKEN="imagerecognition";
 
 	CraftAROnDeviceIR mCraftAROnDeviceIR;
 	CraftAROnDeviceCollectionManager mCollectionManager;
