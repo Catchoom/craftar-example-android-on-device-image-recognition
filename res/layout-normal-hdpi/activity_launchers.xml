@@ -46,8 +46,9 @@
 	    <!-- Example with fragments-->
 	    <include layout="@layout/launchers_row_fragment"/>
 	    
-       
-
+		<!-- Example extended recognition -->
+	    <include layout="@layout/launchers_row_singleshot_extended"/>
+    
         <LinearLayout
             android:id="@+id/layout_logos"
             android:layout_width="match_parent"

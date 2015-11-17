@@ -29,6 +29,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.catchoom.test.R;
 import com.craftar.CraftARActivity;
@@ -57,15 +58,15 @@ public class RecognitionFinderActivity extends CraftARActivity implements CraftA
 	@Override
 	public void onPostCreate(){
 
-		View mainLayout= (View) getLayoutInflater().inflate(R.layout.activity_recognition_finder, null);
-		setContentView(mainLayout);
+		setContentView(R.layout.activity_recognition_finder);
 			 
-        //Obtain an instance and initialize the CraftARSDK (which manages the camera interaction).
+		//Obtain an instance of the CraftARSDK (which manages the camera interaction).
+        //Note we already called CraftARSDK.init() in the Splash Screen, so we don't have to do it again
 		mCraftARSDK = CraftARSDK.Instance();
 		mCraftARSDK.startCapture(this);
 		
 		//Get the instance to the OnDeviceIR singleton (it has already been initialized in the SplashScreenActivity, and the collectoins are already loaded).
-		mOnDeviceIR = CraftAROnDeviceIR.Instance(getApplicationContext());	
+		mOnDeviceIR = CraftAROnDeviceIR.Instance();	
 		
 		//Tell the SDK that the OnDeviceIR who manage the calls to singleShotSearch() and startFinding().
 		//In this case, as we are using on-device-image-recognition, we will tell the SDK that the OnDeviceIR singleton will manage this calls.
@@ -78,6 +79,18 @@ public class RecognitionFinderActivity extends CraftARActivity implements CraftA
 	
 		startFinding();
 	}
+	
+	@Override
+	public void onCameraOpenFailed() {
+		Toast.makeText(getApplicationContext(), "Camera error", Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void onPreviewStarted(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
 	public void searchResults(ArrayList<CraftARResult> results,
 			long searchTimeMillis, int requestCode) {
@@ -176,4 +189,5 @@ public class RecognitionFinderActivity extends CraftARActivity implements CraftA
 		mIsActivityRunning = true;
 	}
 
+	
 }

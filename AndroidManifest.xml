@@ -37,6 +37,11 @@
             android:screenOrientation="portrait">
             </activity>
         <activity
+	        android:name="com.catchoom.advancedexamples.ExtendedRecognitionActivity"
+	        android:screenOrientation="portrait">
+	        
+        </activity>
+        <activity
             android:name="com.catchoom.test.LaunchersActivity">
             </activity>
         <activity
