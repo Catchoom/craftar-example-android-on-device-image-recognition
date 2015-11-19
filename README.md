@@ -41,14 +41,18 @@ Android Studio:
 
 ### Reference images
 
-The project includes a folder 'ReferenceImages' with sample images using the Open Demos collection with the 'catchoomcooldemo' token.
+The project includes a folder 'ReferenceImages' with sample images using the Open Demos collection with the 'imagerecognition' token.
 
-Samples images:
+Samples images for on-device:
 
 ![Business card](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/biz_card.jpe)
 
 ![Cart](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/Image%20Recognition.jpg)
 
+Examples for the extended search:
 
+![Kid](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/kid_with_mobile.jpe)
+
+![CraftAR Logo](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/craftar_logo.jpe)
 
 
