@@ -45,14 +45,14 @@ The project includes a folder 'ReferenceImages' with sample images using the Ope
 
 Samples images for on-device:
 
-![Business card](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/biz_card.jpe)
+![Business card](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/biz_card.jpg)
 
-![Cart](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/Image%20Recognition.jpg)
+![Cart](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/shopping_kart.jpg)
 
 Examples for the extended search:
 
-![Kid](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/kid_with_mobile.jpe)
+![Kid](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/kid_with_mobile.jpg)
 
-![CraftAR Logo](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/craftar_logo.jpe)
+![CraftAR Logo](https://github.com/Catchoom/craftar-example-android-on-device-image-recognition/blob/master/Reference%20images/craftar_logo.jpg)
 
 

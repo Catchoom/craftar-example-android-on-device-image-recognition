@@ -82,7 +82,7 @@ AddCollectionListener, SyncCollectionListener {
 			mCollectionManager.addCollectionWithToken(COLLECTION_TOKEN,this);
 			
 			// Alternatively it can be added from assets using the collection bundle.
-			//mCollectionManager.addCollection((AddCollectionListener)this,"craftarexamples3.zip");
+			//mCollectionManager.addCollection((AddCollectionListener)this,"craftarexamples_odir.zip");
 		}else{
 			//Collection is already available in the device.
 			showSyncDialog();

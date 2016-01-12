@@ -87,8 +87,7 @@ public class RecognitionFinderActivity extends CraftARActivity implements CraftA
 
 	@Override
 	public void onPreviewStarted(int width, int height) {
-		// TODO Auto-generated method stub
-		
+		Log.d(TAG, "Preview started with width:"+width+", height:"+height);
 	}
 
 	@Override

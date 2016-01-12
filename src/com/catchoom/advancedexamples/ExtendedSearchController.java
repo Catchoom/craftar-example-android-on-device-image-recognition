@@ -40,8 +40,9 @@ public class ExtendedSearchController implements SearchController{
 	public void onTakePictureFailed(CraftARError error) {
 		mLastQuery = null;
 		
-		//Error taking the snapshot. Note that the requestCode is currently missing in this error.
-		mResponseHandler.searchFailed(error, 0);
+		//Error taking the snapshot. 
+		//Note that the requestCode is missing in this error, as we actually not performed any image recognition request.
+		mResponseHandler.searchFailed(error, -1);
 	}
 
 	@Override

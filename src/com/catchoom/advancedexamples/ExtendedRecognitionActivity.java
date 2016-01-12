@@ -37,17 +37,10 @@ import com.craftar.CraftARActivity;
 import com.craftar.CraftARCamera;
 import com.craftar.CraftARCloudRecognition;
 import com.craftar.CraftARError;
-import com.craftar.CraftAROnDeviceCollection;
-import com.craftar.CraftAROnDeviceCollectionManager;
-import com.craftar.CraftAROnDeviceCollectionManager.AddCollectionListener;
-import com.craftar.CraftAROnDeviceIR;
-import com.craftar.CraftARQueryImage;
 import com.craftar.CraftARResult;
 import com.craftar.CraftARSDK;
 import com.craftar.CraftARSearchResponseHandler;
 import com.craftar.ImageRecognition.SetCollectionListener;
-import com.craftar.ImageRecognition.SetOnDeviceCollectionListener;
-import com.craftar.SearchController;
 
 /**
  * This example shows how to perform extended image recognition using the single-shot mode, 
