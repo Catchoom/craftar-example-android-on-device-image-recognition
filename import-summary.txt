@@ -1,0 +1,139 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* LICENSE.txt
+* README.md
+* Reference images/
+* Reference images/biz_card.jpg
+* Reference images/craftar_logo.jpg
+* Reference images/kid_with_mobile.jpg
+* Reference images/shopping_kart.jpg
+* android-studio/
+* android-studio/.idea/
+* android-studio/.idea/.name
+* android-studio/.idea/compiler.xml
+* android-studio/.idea/copyright/
+* android-studio/.idea/copyright/profiles_settings.xml
+* android-studio/.idea/misc.xml
+* android-studio/.idea/modules.xml
+* android-studio/.idea/vcs.xml
+* android-studio/.idea/workspace.xml
+* android-studio/app/
+* android-studio/app/build.gradle
+* android-studio/app/libs/
+* android-studio/app/libs/android-support-v13.jar
+* android-studio/app/src/
+* android-studio/app/src/main/
+* android-studio/app/src/main/AndroidManifest.xml
+* android-studio/app/src/main/assets/
+* android-studio/app/src/main/assets/CraftARSDKConfig
+* android-studio/app/src/main/java/
+* android-studio/app/src/main/java/com/
+* android-studio/app/src/main/java/com/catchoom/
+* android-studio/app/src/main/java/com/catchoom/advancedexamples/
+* android-studio/app/src/main/java/com/catchoom/advancedexamples/ExtendedRecognitionActivity.java
+* android-studio/app/src/main/java/com/catchoom/advancedexamples/ExtendedSearchController.java
+* android-studio/app/src/main/java/com/catchoom/test/
+* android-studio/app/src/main/java/com/catchoom/test/CraftARCameraFragment.java
+* android-studio/app/src/main/java/com/catchoom/test/EmptyFragment.java
+* android-studio/app/src/main/java/com/catchoom/test/LaunchersActivity.java
+* android-studio/app/src/main/java/com/catchoom/test/RecognitionFinderActivity.java
+* android-studio/app/src/main/java/com/catchoom/test/RecognitionSingleShotActivity.java
+* android-studio/app/src/main/java/com/catchoom/test/ScreenSlideActivity.java
+* android-studio/app/src/main/java/com/catchoom/test/SplashScreenActivity.java
+* android-studio/app/src/main/java/com/catchoom/test/WebActivity.java
+* android-studio/app/src/main/res/
+* android-studio/app/src/main/res/drawable-xhdpi/
+* android-studio/app/src/main/res/drawable-xhdpi/ar_from_craftar.jpg
+* android-studio/app/src/main/res/drawable-xhdpi/ar_programmatically.jpg
+* android-studio/app/src/main/res/drawable-xhdpi/craftar_c.png
+* android-studio/app/src/main/res/drawable-xhdpi/craftar_logo.png
+* android-studio/app/src/main/res/drawable-xhdpi/fragment_slide.png
+* android-studio/app/src/main/res/drawable-xhdpi/launcher_ar_from_craftar.png
+* android-studio/app/src/main/res/drawable-xhdpi/launcher_ar_programmatically.png
+* android-studio/app/src/main/res/drawable-xhdpi/launchers_about.png
+* android-studio/app/src/main/res/drawable-xhdpi/launchers_play.png
+* android-studio/app/src/main/res/drawable-xhdpi/reco_only.jpg
+* android-studio/app/src/main/res/drawable-xhdpi/splash_screen.png
+* android-studio/app/src/main/res/layout-normal-hdpi/
+* android-studio/app/src/main/res/layout-normal-hdpi/activity_launchers.xml
+* android-studio/app/src/main/res/layout-normal-hdpi/launchers_row_finder.xml
+* android-studio/app/src/main/res/layout-normal-hdpi/launchers_row_fragment.xml
+* android-studio/app/src/main/res/layout-normal-hdpi/launchers_row_singleshot.xml
+* android-studio/app/src/main/res/layout-normal-hdpi/launchers_row_singleshot_extended.xml
+* android-studio/app/src/main/res/layout/
+* android-studio/app/src/main/res/layout/activity_launchers.xml
+* android-studio/app/src/main/res/layout/activity_recognition_finder.xml
+* android-studio/app/src/main/res/layout/activity_recognition_only.xml
+* android-studio/app/src/main/res/layout/activity_screen_slide.xml
+* android-studio/app/src/main/res/layout/activity_web.xml
+* android-studio/app/src/main/res/layout/fragment_1.xml
+* android-studio/app/src/main/res/layout/fragment_camera.xml
+* android-studio/app/src/main/res/layout/launchers_row_finder.xml
+* android-studio/app/src/main/res/layout/launchers_row_fragment.xml
+* android-studio/app/src/main/res/layout/launchers_row_singleshot.xml
+* android-studio/app/src/main/res/layout/launchers_row_singleshot_extended.xml
+* android-studio/app/src/main/res/layout/splash_screen.xml
+* android-studio/app/src/main/res/menu/
+* android-studio/app/src/main/res/menu/activity_screen_slide.xml
+* android-studio/app/src/main/res/menu/main.xml
+* android-studio/app/src/main/res/raw/
+* android-studio/app/src/main/res/raw/ar_programmatically_content.png
+* android-studio/app/src/main/res/values-sw600dp/
+* android-studio/app/src/main/res/values-sw600dp/dimens.xml
+* android-studio/app/src/main/res/values-sw720dp-land/
+* android-studio/app/src/main/res/values-sw720dp-land/dimens.xml
+* android-studio/app/src/main/res/values-v11/
+* android-studio/app/src/main/res/values-v11/styles.xml
+* android-studio/app/src/main/res/values-v14/
+* android-studio/app/src/main/res/values-v14/styles.xml
+* android-studio/app/src/main/res/values/
+* android-studio/app/src/main/res/values/colors.xml
+* android-studio/app/src/main/res/values/dimens.xml
+* android-studio/app/src/main/res/values/ids.xml
+* android-studio/app/src/main/res/values/strings.xml
+* android-studio/app/src/main/res/values/styles.xml
+* android-studio/build.gradle
+* android-studio/gradle/
+* android-studio/gradle/wrapper/
+* android-studio/gradle/wrapper/gradle-wrapper.jar
+* android-studio/gradle/wrapper/gradle-wrapper.properties
+* android-studio/gradlew
+* android-studio/gradlew.bat
+* android-studio/local.properties
+* android-studio/settings.gradle
+* build.xml
+* proguard-project.txt
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* assets/ => app/src/main/assets/
+* libs/android-support-v13.jar => app/libs/android-support-v13.jar
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

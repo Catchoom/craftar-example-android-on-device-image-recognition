@@ -114,7 +114,7 @@ AddCollectionListener, SyncCollectionListener {
 			}
 		}
 		//Error loading the collection into memory. No recognition can be performed unless a collection has been set.
-		Log.e(TAG,"SetCollectionFailed ("+error.getErrorCode()+"):"+error.getErrorMessage());
+		Log.e(TAG, "SetCollectionFailed (" + error.getErrorCode() + "):" + error.getErrorMessage());
 		Toast.makeText(getApplicationContext(), "Error loading", Toast.LENGTH_SHORT).show();
 	}
 
@@ -122,11 +122,11 @@ AddCollectionListener, SyncCollectionListener {
 	public void setCollectionProgress(double progress) {
 		if(setCollectionDialog!=null){
 			if(setCollectionDialog.isShowing()){
-				setCollectionDialog.setProgress((int)(100*progress));
+				setCollectionDialog.setProgress((int) (100 * progress));
 			}
 		}
 		//The images from the collection are loading into memory. You will have to load the collections into memory every time you open the app. 
-		Log.d(TAG,"SetCollectionProgress:"+progress);
+		Log.d(TAG, "SetCollectionProgress:" + progress);
 	}
 
 
@@ -145,7 +145,7 @@ AddCollectionListener, SyncCollectionListener {
 	@Override
 	public void addCollectionFailed(CraftARError error) {
 		//Error adding the bundle to the device internal storage. 
-		Log.e(TAG,"AddCollectionFailed("+error.getErrorCode()+"):"+error.getErrorMessage());
+		Log.e(TAG, "AddCollectionFailed(" + error.getErrorCode() + "):" + error.getErrorMessage());
 		Toast.makeText(getApplicationContext(), "Error adding collection", Toast.LENGTH_SHORT).show();
 		if(addCollectionDialog.isShowing()){
 			addCollectionDialog.dismiss();
@@ -168,7 +168,7 @@ AddCollectionListener, SyncCollectionListener {
 	public void addCollectionProgress(float progress) {
 		//Progress adding the collection to internal storage (de-compressing bundle and storing into the device storage).
 		//Note that this might only happen once per app installation, or when the bundle is updated.
-		Log.d(TAG,"AddCollectionProgress:"+progress);
+		Log.d(TAG, "AddCollectionProgress:" + progress);
 		if(addCollectionDialog!=null){
 			if(addCollectionDialog.isShowing()){
 				addCollectionDialog.setProgress((int)(100*progress));
@@ -178,7 +178,7 @@ AddCollectionListener, SyncCollectionListener {
 	
 	private void loadCollection(CraftAROnDeviceCollection collection){
 		showSetCollectionDialog();
-		mCraftAROnDeviceIR.setCollection(collection, (SetCollectionListener)this);
+		mCraftAROnDeviceIR.setCollection(collection, (SetCollectionListener) this);
 	} 
 
 
@@ -187,7 +187,7 @@ AddCollectionListener, SyncCollectionListener {
 	public void syncSuccessful(CraftAROnDeviceCollection collection) {
 		String text = "Sync succesful for collection "+collection.getName();
 		Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
-		Log.d(TAG,text);
+		Log.d(TAG, text);
 		if(syncCollectionDialog!=null){
 			if(syncCollectionDialog.isShowing()){
 				syncCollectionDialog.dismiss();
@@ -197,6 +197,12 @@ AddCollectionListener, SyncCollectionListener {
 		loadCollection(collection);
 	}
 
+	@Override
+	public void syncFinishedWithErrors(CraftAROnDeviceCollection collection, int itemDownloads, int itemErrors) {
+		String text = "Sync Finished but  " + itemErrors + " of the " + itemDownloads + " items could not be synchronized";
+		Toast.makeText(getApplicationContext(), text , Toast.LENGTH_SHORT).show();
+		Log.e(TAG, text);
+	}
 
 	@Override
 	public void syncProgress(CraftAROnDeviceCollection collection, float progress) {
