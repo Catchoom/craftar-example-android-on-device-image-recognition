@@ -14,7 +14,7 @@ app.
 ### Running the examples
 
 This repository contains the project files and source code of some examples
-that show how to use the CraftAR Augmented Reality SDK.
+that show how to use the CraftAR On-Device Image Recognition SDK.
 
 The examples **are included in the SDK distribution with the SDK already linked to
 the project**. The easiest way to use the examples is to 
