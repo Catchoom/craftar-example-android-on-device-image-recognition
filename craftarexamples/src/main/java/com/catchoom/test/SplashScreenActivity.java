@@ -38,8 +38,9 @@ import com.craftar.CraftAROnDeviceCollectionManager.AddCollectionListener;
 import com.craftar.CraftAROnDeviceCollectionManager.SyncCollectionListener;
 import com.craftar.CraftAROnDeviceIR;
 import com.craftar.CraftARSDK;
-import com.craftar.ImageRecognition.SetCollectionListener;
-import com.craftar.ImageRecognition.SetOnDeviceCollectionListener;
+import com.craftar.SetOnDeviceCollectionListener;
+
+import java.util.List;
 
 public class SplashScreenActivity extends Activity implements SetOnDeviceCollectionListener,
 AddCollectionListener, SyncCollectionListener {
@@ -89,9 +90,9 @@ AddCollectionListener, SyncCollectionListener {
 			col.sync((SyncCollectionListener)this);
 		}
     }
-	
+
 	@Override
-	public void collectionReady() {
+	public void collectionReady(List<CraftARError> list) {
 		Toast.makeText(getApplicationContext(), "Collection ready!", Toast.LENGTH_SHORT).show();
 		if(setCollectionDialog!=null){
 			if(setCollectionDialog.isShowing()){
@@ -178,7 +179,7 @@ AddCollectionListener, SyncCollectionListener {
 	
 	private void loadCollection(CraftAROnDeviceCollection collection){
 		showSetCollectionDialog();
-		mCraftAROnDeviceIR.setCollection(collection, (SetCollectionListener) this);
+		mCraftAROnDeviceIR.setCollection(collection, (SetOnDeviceCollectionListener) this);
 	} 
 
 
