@@ -23,6 +23,7 @@
 package com.catchoom.advancedexamples;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -40,7 +41,8 @@ import com.craftar.CraftARError;
 import com.craftar.CraftARResult;
 import com.craftar.CraftARSDK;
 import com.craftar.CraftARSearchResponseHandler;
-import com.craftar.ImageRecognition.SetCollectionListener;
+import com.craftar.SetCloudCollectionListenner;
+import com.craftar.SetOnDeviceCollectionListener;
 
 /**
  * This example shows how to perform extended image recognition using the single-shot mode, 
@@ -97,7 +99,7 @@ public class ExtendedRecognitionActivity extends CraftARActivity implements OnCl
 		
 		CraftARCloudRecognition cloudIR = CraftARCloudRecognition.Instance(); //Get the instance to the CraftARCloudRecognition module		
 		//Use the collection specified by the TOKEN in the CraftARCloudRecognition module. Receive the callbacks from the setCollection call in our CloudSetCollectionListener 
-		cloudIR.setCollection(MY_CLOUD_COLLECTION_TOKEN, new SetCollectionListener() {
+		cloudIR.setCollection(MY_CLOUD_COLLECTION_TOKEN, new SetCloudCollectionListenner() {
 			@Override
 			public void collectionReady() {
 				Log.d(TAG, "Cloud collection is ready!");
