@@ -41,7 +41,7 @@ import com.craftar.CraftARError;
 import com.craftar.CraftARResult;
 import com.craftar.CraftARSDK;
 import com.craftar.CraftARSearchResponseHandler;
-import com.craftar.SetCloudCollectionListenner;
+import com.craftar.SetCloudCollectionListener;
 import com.craftar.SetOnDeviceCollectionListener;
 
 /**
@@ -99,7 +99,7 @@ public class ExtendedRecognitionActivity extends CraftARActivity implements OnCl
 		
 		CraftARCloudRecognition cloudIR = CraftARCloudRecognition.Instance(); //Get the instance to the CraftARCloudRecognition module		
 		//Use the collection specified by the TOKEN in the CraftARCloudRecognition module. Receive the callbacks from the setCollection call in our CloudSetCollectionListener 
-		cloudIR.setCollection(MY_CLOUD_COLLECTION_TOKEN, new SetCloudCollectionListenner() {
+		cloudIR.setCollection(MY_CLOUD_COLLECTION_TOKEN, new SetCloudCollectionListener() {
 			@Override
 			public void collectionReady() {
 				Log.d(TAG, "Cloud collection is ready!");
