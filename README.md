@@ -23,7 +23,7 @@ open the Android Studio project and hit the run button.
 
 ### Requirements
 
-Android Studio, the Android SDK and a device with and at least Android 3.0.
+Android Studio, the Android SDK and a device with and at least Android 4.2.
 
 ### Integrate the SDK in your own project
 
