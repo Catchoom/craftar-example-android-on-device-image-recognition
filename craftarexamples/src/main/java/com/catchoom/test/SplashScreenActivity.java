@@ -199,8 +199,8 @@ AddCollectionListener, SyncCollectionListener {
 	}
 
 	@Override
-	public void syncFinishedWithErrors(CraftAROnDeviceCollection collection, int itemDownloads, int itemErrors) {
-		String text = "Sync Finished but  " + itemErrors + " of the " + itemDownloads + " items could not be synchronized";
+	public void syncFinishedWithErrors(CraftAROnDeviceCollection collection, CraftARError error) {
+		String text = error.getErrorMessage();
 		Toast.makeText(getApplicationContext(), text , Toast.LENGTH_SHORT).show();
 		Log.e(TAG, text);
 	}
