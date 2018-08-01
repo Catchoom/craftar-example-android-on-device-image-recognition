@@ -18,7 +18,7 @@ that show how to use the CraftAR On-Device Image Recognition SDK.
 
 The examples **are included in the SDK distribution with the SDK already linked to
 the project**. The easiest way to use the examples is to 
-[download the SDK](http://catchoom.com/documentation/on-device-image-recognition-sdk/android-on-device-image-recognition-sdk/), 
+[download the SDK](http://documentation.catchoom.com/documentation/on-device-image-recognition-sdk/android-on-device-image-recognition-sdk/), 
 open the Android Studio project and hit the run button.
 
 ### Requirements
